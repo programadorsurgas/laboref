@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LABOREF</title>
+
+    {# Cargamos la librería #}
+	  {% load bootstrap4 %}
+
+	  {# CSS Bootstrap #}
+	  {% bootstrap_css %}
+</head>
+
+{% block body%}
+  <body>
+    <div class="px-2">
+      {% block navar %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="/animal/"> <img src="{% static 'animal/index.jpeg' %}" width="40" height="40" alt="my image"> </a>
+          </a>
+          <a class="navbar-brand" href="/animal/"> Home </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    {% endblock%}
+
+    {% block content%}
+      Esta es la plantilla base
+    {% endblock%}
+    </div>
+  </body>
+
+
+{% endblock %}
+
+{# JS y jQuery Bootstrap #}
+{% bootstrap_javascript jquery='full' %}
+</html>

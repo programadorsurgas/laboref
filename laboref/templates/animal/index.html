@@ -1,0 +1,18 @@
+{%extends 'base/base.html'%}
+
+{% block content %}
+
+{% if animal_list %}
+<ul>
+    {% for animal in animal_list %}
+    <li> <a href="/animal/{{ animal.id }}/">{{ animal.animal_name }} </a> </li>
+    {% endfor %}
+</ul>
+
+{% else %}
+
+<p>No animal are available.</p>
+
+{% endif %}
+
+{% endblock%}

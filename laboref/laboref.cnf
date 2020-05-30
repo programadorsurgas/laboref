@@ -1,0 +1,7 @@
+
+[client]
+database = laboref
+host = localhost
+user = jhon
+password = Soloyo.com77
+default-character-set = utf8mb4

@@ -1,0 +1,17 @@
+{%extends 'base/base.html'%}
+
+{% block content %}
+<h1> {{ animal.animal_name }} </h1>
+<h4> Raza: {{ animal.animal_breed }} </h4>
+<h4> Color: {{ animal.animal_color }} </h4>
+<h4> Edad (años): {{ animal.animal_age }} </h4>
+<td> <a class=btn href="/animal/edit/{{animal.id}}"> <i class="icon-pencil"></i> Editar </a> </td>
+
+<!--
+ {%if user.is_authenticated %}
+    <td> <a class=btn href="/edit/animal/{{animal.id}}"> <i class="icon-pencil"></i> Editar </a> </td>
+ {% endif %}
+ -->
+
+<button class="btn btn-success"> Adoptar </button>
+{% endblock %}
