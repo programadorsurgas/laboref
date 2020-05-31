@@ -1,16 +1,22 @@
 {%extends 'base/base.html'%}
 
 {% block content %}
-<h1> {{ animal.animal_name }} </h1>
-<h4> Raza: {{ animal.animal_breed }} </h4>
-<h4> Color: {{ animal.animal_color }} </h4>
-<h4> Edad (años): {{ animal.animal_age }} </h4>
-
+<div class="row">
+    <div class="span6">
+        <form action="" method="post" class="post-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-success" type="submit" value="Guardar Cambios">
+        </form>
+    </div>
+    <div class="span6">
+        <img src="/{{animal.animal_image}}">
+    </div>
+</div>
 <!--
  {%if user.is_authenticated %}
     <td> <a class=btn href="/edit/animal/{{animal.id}}"> <i class="icon-pencil"></i> Editar </a> </td>
  {% endif %}
  -->
 
-<button class="btn btn-success"> Guardar </button>
 {% endblock %}

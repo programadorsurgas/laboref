@@ -36,6 +36,7 @@ class Animal(models.Model):
     animal_breed = models.ForeignKey(Breed, on_delete=models.DO_NOTHING)
     animal_color = models.ForeignKey(AnimalColor, on_delete=models.DO_NOTHING)
     animal_age = models.IntegerField()
+    animal_image = models.ImageField(upload_to='animal/', default='media/None/no-img.jpg')
 
     def __str__(self):
         return self.animal_name

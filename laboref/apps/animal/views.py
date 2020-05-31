@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader, RequestContext
-from django.shortcuts import render, get_object_or_404
-from .forms import EditAnimalForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import EditAnimalForm, NewAnimalForm
 from .models import Animal
 
 
@@ -21,9 +21,23 @@ def detail_animal_view(request, animal_id):
 
 def edit_animal_view(request, animal_id):
     animal = Animal.objects.get(id=animal_id)
-    if request.method == "GET":
-        form = EditAnimalForm(initial={
-            'animal_name': animal.animal_name
-        })
-        ctx = {'form': form, 'animal': animal}
-    return render(request, "animal/edit.html", {'animal': animal})
+    form = EditAnimalForm(initial={
+        'animal_name': animal.animal_name,
+        'animal_breed': animal.animal_breed,
+        'animal_color': animal.animal_color,
+        'animal_age': animal.animal_age
+    })
+    context = {'form': form, 'animal':animal}
+    return render(request, "animal/edit.html", context)
+
+
+def new_animal_view(request):
+    if request.method == "POST":
+        form = NewAnimalForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('index')
+    else:
+        form = NewAnimalForm()
+    return render(request, "animal/edit.html", {'form': form})
